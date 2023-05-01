@@ -1,5 +1,5 @@
-const Conversations = require('../models/conversationModel')
-const Messages = require('../models/messageModel')
+const Conversations = require('../backend/models/conversationModel')
+const Messages = require('../backend/models/messageModel')
 
 class APIfeatures {
     constructor(query, queryString){

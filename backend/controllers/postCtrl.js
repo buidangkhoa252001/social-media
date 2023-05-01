@@ -1,6 +1,6 @@
-const Posts = require('../models/postModel')
-const Comments = require('../models/commentModel')
-const Users = require('../models/userModel')
+const Posts = require('../backend/models/postModel')
+const Comments = require('../backend/models/commentModel')
+const Users = require('../backend/models/userModel')
 
 class APIfeatures {
     constructor(query, queryString){
