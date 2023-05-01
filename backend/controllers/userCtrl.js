@@ -1,4 +1,4 @@
-const Users = require('../backend/models/userModel')
+const Users = require('../models/userModel')
 
 const userCtrl = {
     searchUser: async (req, res) => {

@@ -1,4 +1,4 @@
-const Notifies = require('../backend/models/notifyModel')
+const Notifies = require('../models/notifyModel')
 
 
 const notifyCtrl = {

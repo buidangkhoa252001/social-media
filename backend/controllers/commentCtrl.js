@@ -1,5 +1,5 @@
-const Comments = require('../backend/models/commentModel')
-const Posts = require('../backend/models/postModel')
+const Comments = require('../models/commentModel')
+const Posts = require('../models/postModel')
 
 
 const commentCtrl = {
