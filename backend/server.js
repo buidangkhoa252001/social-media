@@ -4,19 +4,30 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const SocketServer = require('./socketServer')
+const { Server }  = require("socket.io");
 const { ExpressPeerServer } = require('peer')
 const path = require('path')
 
 
 const app = express()
+const corsOptions = {
+  credentials: true,
+  origin: "http://localhost:3000",
+  optionSuccessStatus: 200,
+};
 app.use(express.json())
-app.use(cors())
+
+app.use(cors(corsOptions));
 app.use(cookieParser())
 
 
 // Socket
 const http = require('http').createServer(app)
-const io = require('socket.io')(http)
+const io =  new Server(http, {
+  cors: {
+    origin: "http://localhost:3000",
+  },
+})
 
 io.on('connection', socket => {
     SocketServer(socket)

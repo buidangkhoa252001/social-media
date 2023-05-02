@@ -59,7 +59,7 @@ export const likeComment = ({comment, post, auth}) => async (dispatch) => {
     dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
 
     try {
-        await patchDataAPI(`comment/${comment._id}/like`, null, auth.token)
+        await patchDataAPI(`comment/${comment._id}/like`, {}, auth.token)
     } catch (err) {
         dispatch({ type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg} })
     }
@@ -76,7 +76,7 @@ export const unLikeComment = ({comment, post, auth}) => async (dispatch) => {
     dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
 
     try {
-        await patchDataAPI(`comment/${comment._id}/unlike`, null, auth.token)
+        await patchDataAPI(`comment/${comment._id}/unlike`, {}, auth.token)
     } catch (err) {
         dispatch({ type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg} })
     }
