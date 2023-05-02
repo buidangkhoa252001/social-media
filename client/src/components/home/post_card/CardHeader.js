@@ -14,8 +14,8 @@ const CardHeader = ({post}) => {
     const history = useHistory()
 
     const handleEditPost = () => {
-       /*  dispatch({ type: GLOBALTYPES.STATUS, payload: {...post, onEdit: true}}) */
-      dispatch(OpenStatusEdit({ status: true }))
+        dispatch({ type: GLOBALTYPES.STATUS, payload: {...post, onEdit: true}})
+     
     }
 
     const handleDeletePost = () => {
