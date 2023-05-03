@@ -25,7 +25,7 @@ app.use(cookieParser())
 const http = require('http').createServer(app)
 const io =  new Server(http, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
   },
 })
 
@@ -36,7 +36,6 @@ io.on('connection', socket => {
 // Create peer server
 ExpressPeerServer(http, { path: '/' })
 
-
 // Routes
 app.use('/api', require('./routes/authRouter'))
 app.use('/api', require('./routes/userRouter'))
@@ -45,7 +44,18 @@ app.use('/api', require('./routes/commentRouter'))
 app.use('/api', require('./routes/notifyRouter'))
 app.use('/api', require('./routes/messageRouter'))
 
-
+const buildPath = path.join(__dirname,"../client/build")
+ app.use(express.static(buildPath))
+app.get("/*",function(req,res){
+  res.sendFile(
+    path.join(__dirname, "../client/build/index.html"),
+    function(err){
+      if(err){
+        res.status(500).send(err)
+      }
+    }
+  )
+})
 const URI = process.env.MONGODB_URL
 mongoose.connect(URI, {
     useCreateIndex: true,
@@ -57,12 +67,12 @@ mongoose.connect(URI, {
     console.log('Connected to mongodb')
 })
 
-if(process.env.NODE_ENV === 'production'){
+/* if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
     })
-}
+} */
 
 
 const port = process.env.PORT || 5000
