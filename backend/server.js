@@ -44,17 +44,20 @@ app.use('/api', require('./routes/commentRouter'))
 app.use('/api', require('./routes/notifyRouter'))
 app.use('/api', require('./routes/messageRouter'))
 
-const buildPath = path.join(__dirname,"../client/build")
- app.use(express.static(buildPath))
-app.get("/*",function(req,res){
-  res.sendFile(
-    path.join(__dirname, "../client/build/index.html"),
-    function(err){
-      if(err){
-        res.status(500).send(err)
-      }
-    }
-  )
+const _dirname = path.dirname("")
+const buildPath = path.join(_dirname, "../client/build");
+app.use(express.static(buildPath))
+app.get("/*", function(req, res){
+
+    res.sendFile(
+        path.join(__dirname, "../client/build/index.html"),
+        function (err) {
+          if (err) {
+            res.status(500).send(err);
+          }
+        }
+      );
+
 })
 const URI = process.env.MONGODB_URL
 mongoose.connect(URI, {
