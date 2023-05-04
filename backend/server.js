@@ -10,8 +10,27 @@ const path = require('path')
 
 
 const app = express()
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', "*");
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Private-Network', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 const corsOptions = {
-  credentials: true,
+  /* credentials: true, */
   origin: "http://localhost:3000",
   optionSuccessStatus: 200,
 };
@@ -23,11 +42,21 @@ app.use(cookieParser())
 
 // Socket
 const http = require('http').createServer(app)
-const io =  new Server(http, {
+/* const io =  new Server(http, {
   cors: {
     origin: "*",
   },
-})
+}) */
+/* var io = new Server(http, {log:false, origins:'*:*'}); */
+/* const io =  new Server(http,{origin:'http://localhost:3000'}) */
+const io = require("socket.io")(http, {
+  cors: {
+    origin: ['http://localhost:3000','http://43.206.152.41'],
+    methods: ["GET", "POST"],
+     credentials: true,
+     
+  }
+});
 
 io.on('connection', socket => {
     SocketServer(socket)

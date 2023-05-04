@@ -32,8 +32,11 @@ function App() {
   useEffect(() => {
     dispatch(refreshToken())
 
- /*    const socket = io() */
-     const socket = io("ws://localhost:5000");
+     const socket = io("http://localhost:5000",{
+  withCredentials: true,
+  transports: ["websocket","polling"]
+  
+  });
     dispatch({type: GLOBALTYPES.SOCKET, payload: socket})
     return () => socket.close()
   },[dispatch])
