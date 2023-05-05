@@ -30,8 +30,8 @@ app.use(function (req, res, next) {
     next();
 });
 const corsOptions = {
-  /* credentials: true, */
-  origin: "http://localhost:3000",
+  credentials: true,
+  origin: "https://melodious-clafoutis-829a86.netlify.app",
   optionSuccessStatus: 200,
 };
 app.use(express.json())
