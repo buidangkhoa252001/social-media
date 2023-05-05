@@ -32,6 +32,7 @@ app.use(function (req, res, next) {
 const corsOptions = {
   credentials: true,
   origin: "https://melodious-clafoutis-829a86.netlify.app",
+ /*  origin: "http://43.206.152.41", */
   optionSuccessStatus: 200,
 };
 app.use(express.json())
