@@ -31,8 +31,11 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshToken())
-
-     const socket = io("http://localhost:5000",{
+    const protocol = window.location.protocol.includes('https') ? 'wss': 'ws'
+    const ws = new WebSocket(`${protocol}://${window.location.host}`);
+   /*  console.log(window.location)
+    console.log(protocol) */
+     const socket = io(/* "http://localhost:5000" */ws,{
   withCredentials: true,
   transports: ["websocket","polling"]
   
