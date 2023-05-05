@@ -1,7 +1,7 @@
 import axios from "axios";
 
-/* const BASE_URL = 'https://socialmedia-vn8z.onrender.com'; */
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = 'https://socialmedia-vn8z.onrender.com';
+/* const BASE_URL = "http://localhost:5000"; */
 const instance = axios.create({
   baseURL: BASE_URL,
    withCredentials: true,
