@@ -51,8 +51,8 @@ const http = require('http').createServer(app)
 /* const io =  new Server(http,{origin:'http://localhost:3000'}) */
 const io = require("socket.io")(http, {
   cors: {
-    /* origin: ['http://localhost:3000','http://43.206.152.41','https://melodious-clafoutis-829a86.netlify.app'], */
-     origin: "*",
+    origin: ['http://localhost:3000','http://43.206.152.41','https://melodious-clafoutis-829a86.netlify.app'],
+    /*  origin: "*", */
     methods: ["GET", "POST"],
      credentials: true,
      

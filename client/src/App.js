@@ -31,11 +31,12 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshToken())
-    const protocol = window.location.protocol.includes('https') ? 'wss': 'ws'
-    const ws = new WebSocket(`${protocol}://${window.location.host}`);
+  /*   const protocol = window.location.protocol.includes('https') ? 'wss': 'ws'
+    const ws = new WebSocket(`${protocol}://${window.location.host}`); */
+    const BASE_URL = 'https://socialmedia-vn8z.onrender.com';
    /*  console.log(window.location)
     console.log(protocol) */
-     const socket = io(/* "http://localhost:5000" */ws,{
+     const socket = io(BASE_URL,{
   withCredentials: true,
   transports: ["websocket","polling"]
   
