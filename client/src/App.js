@@ -33,8 +33,8 @@ function App() {
     dispatch(refreshToken())
   /*   const protocol = window.location.protocol.includes('https') ? 'wss': 'ws'
     const ws = new WebSocket(`${protocol}://${window.location.host}`); */
-    const BASE_URL = 'https://socialmedia-vn8z.onrender.com';
-   /*  const BASE_URL = "http://localhost:5000"; */
+    /* const BASE_URL = 'https://socialmedia-vn8z.onrender.com'; */
+    const BASE_URL = "http://localhost:5000";
    /*  console.log(window.location)
     console.log(protocol) */
      const socket = io(BASE_URL,{
